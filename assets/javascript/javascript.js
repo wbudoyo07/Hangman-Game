@@ -4,6 +4,7 @@
 // arrays questions and answers
 var questions=["Guess the name ?", "your brother name ?"];
 var answers=["will", "ben", "hey", "you",];
+var userGuess=prompt("guess?");
 
 //randomly choose a choice from the options arrays. computer select the questions and answers
 var computerQuestions =questions[Math.floor(Math.random() * questions.length)];
@@ -26,7 +27,7 @@ var guessleft=0;
 document.onkeyup= function(event){
 
     
-    // var userGuess= event.key;
+   userGuess= event.key;
 //     prompt("user guess"+ userGuess);
 // console.log(userGuess);
 //loops the array of questions
