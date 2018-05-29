@@ -2,23 +2,33 @@
  // =======================================================================================
 
 // arrays questions and answers
-var questions=["Guess the cities ? " ,"Guess the food ?", "Guess the name ?"];
-var answers=["Philadelphia", "chicken","will"];
+var questions=["Guess the name ?", "your brother name ?"];
+var answers=["will", "ben", "hey", "you",];
 
 //randomly choose a choice from the options arrays. computer select the questions and answers
 var computerQuestions =questions[Math.floor(Math.random() * questions.length)];
 var computerAnswer =answers[Math.floor(Math.random() * answers.length)];
 
+//debugging
+console.log(computerQuestions);
+console.log(computerAnswer);
  // Determines which key was pressed.
- var userGuess = event.key;
+ 
 
-// var to count
-var guessCount= 0;
+// var to win, lose and guessleft count
+var winCount=0;
+var loseCount=0;
+var guessleft=0;
 
  // FUNCTIONS
 // ========================================================================================
 
+document.onkeyup= function(event){
 
+    
+    // var userGuess= event.key;
+//     prompt("user guess"+ userGuess);
+// console.log(userGuess);
 //loops the array of questions
 for(var i=0; i<questions.length; i++){
 
@@ -28,14 +38,18 @@ for(var i=0; i<questions.length; i++){
 } // end array of questions
 
 // loops the array of answers
-for (var i=0; i<answer.length;i++){
+for (var i=0; i<answers.length;i++){
+    console.log(computerAnswer[i]);
+    if(computerAnswer[i].charAt(i)==="u"){
 
-    if(computerAnswer.charAt===userGuess){
-        
-        // log the the answer
-        console.log(answer[i]);
-    }
+    //     alert("you are right");
+    //     // log the the answer
+        console.log("you got it");
+    // }else{
+    //     alert("you are wrong!");
+    };
     
+};
   
 
 }// end loops arrays of answers
