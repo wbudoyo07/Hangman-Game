@@ -1,10 +1,10 @@
 <!-- HomeWork-3-Hangman Game
 Created Monday, May 28 2018
-last edited Monday, May 20 2018
+last edited Saturday, Jun 02 2018
 Due Saturday, June 09 2019
 @copyright William Budoyo 2018 -->
 
-<!DOCTYPE <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="eng-us">
 <head>
     <meta charset="utf-8" />
@@ -18,7 +18,8 @@ Due Saturday, June 09 2019
 </head>
 
 <body>
-
+    <!-- creating canvas to draw hang man  -->
+    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #c3c3c3;"> </canvas>
     <header>
 
 
@@ -27,18 +28,28 @@ Due Saturday, June 09 2019
     </header>  <!-- End header-->
 
     <!-- Main body web  -->
-    <div  class="container">
-        <h3 id=" questionID" >Your Questions :</h3>
+    
+    <div class ="mainBody"></div>
 
-        <h3 id="pickLetterID" >Pick your letters :</h3>
+        <p id="questionID"></p>
 
-        <h3 id="yourGuessID">You guessed :</h3>
+        <p id="answerID"></p>
+
+       <p id="blankSpaceID"></p>
+
+       <p id="counterID"> guess left </p> 
+       
+       <p id="wrongGuessesID"> Wrong Guesses!</p>
+
+     
+
+      
 
 
-    </div>  <!--end main container div-->
+     <!--end main container div-->
 
     <!-- java script link -->
-    <script src="assets/javascript/javascript.js"></script>
+    <script src="assets/javascript/javascript.js"> </script>
     
 </body>
 
