@@ -25,7 +25,23 @@
 
 
     
-    
+0. create an array that assign informations of the questions , answer and images
+1.click anything in order game to start
+2. we need to randomly mix the value in inside the array
+
+default menu/the page before user press the letters
+3. print out the question of the array
+4. we need to print out the blank spaces of the answer (ex:_ _ _ _ _) by iterating  single char in the answer's array.
+5.set up the guess lives to 5 and print it out 
+6. print out text for  wrong guesses 
+
+when we press the letters
+if match with answer blank array
+then print out the letters
+else  print out the letter on wrong guess and minus  one  the guest's lives
+
+
+
  
  
  
