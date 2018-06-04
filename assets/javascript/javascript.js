@@ -7,7 +7,7 @@ var questions=[
                 {q:"Your fav band", a:"LinkinPark"},
                 {q:"Your fav music", a:"Jazz"}
                 ];
-                    console.log(questions[0].a.length);
+                    // console.log(questions[0].a.length);
                 // var x = document.images[0].src;
                 // document.getElementById("demo").innerHTML = x;
                 // console.log(questions[0].src)
@@ -26,6 +26,9 @@ var chosenWord = "";
  
 // This will break the solution into individual letters to be stored in array.
 var lettersInChosenWord = [];
+
+// hold the array  letter of the array when they make the wrong choice
+ var wrongGuesses =[];
 
 // var to win, lose  number blank and guessleft count
 var winCount=0;
@@ -53,24 +56,33 @@ var computerQuestions =questions[Math.floor(Math.random() * questions.length)];
 // print out the questions output
  document.getElementById("questionID").innerHTML = computerQuestions.q + " ? " ;
 
+ // reset the blank spaces guess  if we dont reset it show the previeus answer or the letter we used
+blankSpaces=[];
+
+//reset the letter of the wrong guesses
+wrongGuesses=[];
+
  // the words is broken into individual letters
  answerArray = chosenWord.split("");
 
+ // testing
 console.log(answerArray);
+ 
  // iterrate the blankspaces as same length as the hidden answers
  for(var i=0; i<computerQuestions.a.length; i++){
      blankSpaces.push("_");
 
  }
 
- //reprint the guess left to 5
- document.getElementById("counterID").innerHTML=guessLeft.toString();
- 
-   // Prints the blanks at the beginning of each round in the HTML.
-   document.getElementById("blankSpaceID").innerHTML = blankSpaces.join(" ");
+ // Prints the blanks at the beginning of each round in the HTML.
+   document.getElementById("blankSpaceID").innerHTML = blankSpaces.join(" ")
 
-   // Clears the wrong guesses from the previous round.
-//    document.getElementById("wrongGuessesID").innerHTML = wrongGuesses.join(" ");
+    //reprint the guess left to 5
+ document.getElementById("counterID").innerHTML=guessLeft;
+ 
+
+//  Clears the wrong guesses from the previous round.
+   document.getElementById("wrongGuessesID").innerHTML = wrongGuesses.join(" ");
 
 
 
@@ -79,8 +91,11 @@ console.log(answerArray);
 }// end hangManGame function
 
 //function to iterate the blank number
-function compareLetters(){
+function compareLetters(letterGuessed){
 
+    var letterInWord= false;
+
+  
   for(var i=0; i<questions.length; i++){
     
     // push answer array to answer array by single character
@@ -88,7 +103,7 @@ function compareLetters(){
    
     answerArray2.push(questions[i].a);
     
-    document.getElementById("answerID").innerHTML = answerArray2;
+    // document.getElementById("answerID").innerHTML = answerArray2;
   }// end for loop
  console.log("this is array 2"+answerArray2);
 
@@ -109,11 +124,25 @@ function compareLetters(){
     
     // answerArray.push(computerQuestions.a.charAt(i))    ;
     
-   
-
+//============================================
+// start the game 
  hangMangame();
+
+ //  user input when they press the keyboard
+ document.onkeyup= function(event){
+
+    //convert the users' press to lowercase letters
+    userGuess= String.fromCharCode(event).toLocaleLowerCase();
+    
+    // compare the user input with the correct answer by calling the method we created
+    compareLetters(userGuess);
+
+
+     
+ }// end function event 
+
+
  
- compareLetters();
 
 //======================================================================================
 // This function is compare to user input and answer of the array. We also lower case all text
