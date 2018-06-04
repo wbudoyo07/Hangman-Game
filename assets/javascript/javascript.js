@@ -17,6 +17,7 @@ var questions=[
  //  Hold the letters of the answer of the blank (ex: H _ E _ _)       
 var answerArray=[];
 var answerArray2=[];
+var userGuess=""
 
 // Hold the lines of blank's answers(ex: _ _ _ _ _)   
 var blankSpaces =[];
@@ -36,6 +37,8 @@ var loseCount=0;
 var guessLeft=0;
 var numBlank=0;
 
+//randomly choose a choice from the options arrays. computer select the questions and answers
+var computerQuestions =questions[Math.floor(Math.random() * questions.length)];
  // FUNCTIONS
 // ========================================================================================
 
@@ -47,7 +50,9 @@ function hangMangame(){
 
 
 //randomly choose a choice from the options arrays. computer select the questions and answers
-var computerQuestions =questions[Math.floor(Math.random() * questions.length)];
+// var computerQuestions =questions[Math.floor(Math.random() * questions.length)];
+console.log(" this is the questions  " +  computerQuestions.q);
+console.log(" this is the answer   " +  computerQuestions.a);
 
 //testing,debugging, or double check to see the questions and answers as same as the output
 // console.log(computerQuestions.q);
@@ -63,10 +68,10 @@ blankSpaces=[];
 wrongGuesses=[];
 
  // the words is broken into individual letters
- answerArray = chosenWord.split("");
+ 
 
  // testing
-console.log(answerArray);
+// console.log(answerArray);
  
  // iterrate the blankspaces as same length as the hidden answers
  for(var i=0; i<computerQuestions.a.length; i++){
@@ -74,6 +79,7 @@ console.log(answerArray);
 
  }
 
+  console.log(blankSpaces);
  // Prints the blanks at the beginning of each round in the HTML.
    document.getElementById("blankSpaceID").innerHTML = blankSpaces.join(" ")
 
@@ -93,19 +99,37 @@ console.log(answerArray);
 //function to iterate the blank number
 function compareLetters(letterGuessed){
 
-    var letterInWord= false;
-
+    
   
-  for(var i=0; i<questions.length; i++){
+  for(var i=0; i<computerQuestions.a.length; i++){
     
     // push answer array to answer array by single character
-//    questions.a.push(answerArray);
-   
-    answerArray2.push(questions[i].a);
-    
-    // document.getElementById("answerID").innerHTML = answerArray2;
+    answerArray2.push(computerQuestions.a.charAt(i));
+    console.log(answerArray2);
   }// end for loop
- console.log("this is array 2"+answerArray2);
+
+ // This boolean will be toggled based on whether or not
+  // a user letter is found anywhere in the word.
+  var letterInWord = false;
+
+  //check the user guess is it inside the array answer
+for(var i=0;i<blankSpaces; i++){
+
+    if(chosenWord[i]=== userGuess){
+
+        letterInWord= true;
+    }
+}// end for
+
+// if the user guess find in the answer array then we need to print it out
+if(letterInWord){
+    
+    //loop throught the word
+    for(var i=0; i< blankSpaces; i++){
+
+
+    }
+}
 
  
   
@@ -128,6 +152,7 @@ function compareLetters(letterGuessed){
 // start the game 
  hangMangame();
 
+ compareLetters();
  //  user input when they press the keyboard
  document.onkeyup= function(event){
 
