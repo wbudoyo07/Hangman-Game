@@ -4,7 +4,7 @@ var hangManArray= [{q: "what is the name nfl team in philadelphia ", a: "eagles"
                    {q: " who is the CEO of tesla", a :"elonmusk"},
                    {q: "what is the name of nba team in philadelphia", a:"sixers"},
                    {q: "most selling item in Wallmart ", a:"banana"},
-                   {q: "MLB team's in philadelphia ", a:"philloes"},   
+                   {q: "MLB team's in philadelphia ", a:"phillies"},   
                   
                     
                 ];
@@ -134,7 +134,8 @@ function roundComplete()
         myResetGame;
         var alertingWin = setTimeout(function() { alert("You Win");}, 700);
             alertingWin;
-            
+
+            clearCanvas();  
         myCanvasDefault();
 
     }// end if
@@ -151,6 +152,7 @@ function roundComplete()
     //if user have 5 lives creating the body( " |  "")
     else if( playerLives === 5)
     {
+        ctx.beginPath();
         ctx.moveTo(100,80);
         ctx.lineTo(100,60);
         ctx.stroke();
@@ -159,6 +161,7 @@ function roundComplete()
     //if user have 4 lives creating the left hand ( " \  "")
     else if( playerLives === 4)
     {
+        ctx.beginPath();
         ctx.moveTo(100,60);
         ctx.lineTo(60,50);
         ctx.stroke();
@@ -167,6 +170,7 @@ function roundComplete()
     //if user have 3 lives creating the right hand ( " /  "")
     else if( playerLives === 3)
     {
+        ctx.beginPath();
         ctx.moveTo(150,50);
         ctx.lineTo(100,60);
         ctx.stroke();
@@ -175,6 +179,7 @@ function roundComplete()
     //if user have 2 lives creating the left leg ( " / "")
     else if( playerLives === 2)
     {
+        ctx.beginPath();
         ctx.moveTo(60,90);
         ctx.lineTo(100,80);
         ctx.stroke();
@@ -184,6 +189,7 @@ function roundComplete()
     //if user have 1 lives creating the right leg ( " \ "")
     else if( playerLives === 1)
     {
+        ctx.beginPath();
         ctx.moveTo(150,90);
         ctx.lineTo(100,80);
         ctx.stroke();
@@ -201,6 +207,7 @@ function roundComplete()
 
         // reset the game
         hangManGameDefault();
+        clearCanvas(); 
         myCanvasDefault();
       
     }
@@ -209,8 +216,8 @@ function roundComplete()
 
 //canvas default 
 function myCanvasDefault(){
-    // creating hangman image 
-
+// creating box and hanger images
+ctx.beginPath();
 ctx.moveTo(0,20);
 ctx.lineTo(100,20);
 ctx.moveTo(100,20);
@@ -221,6 +228,12 @@ ctx.stroke();
 
 }// end myCanvasDefault
 
+// function to clear all the canvas
+function clearCanvas(){
+const ctx = myCanvas.getContext('2d');
+
+ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+}
 //=================================================================================================
 //MAIN PROCESS
 
