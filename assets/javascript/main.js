@@ -1,9 +1,13 @@
 //VARIABLES
 // arrays hold questions and answers 
-var hangManArray= [{q: "guess the name ", a: "will"},
-                   {q: " My fav band", a :"linkinpark"},
-                   {q: "fav genre  music", a:"jazz"}
-                  ];
+var hangManArray= [{q: "what is the name nfl team in philadelphia ", a: "eagles"},
+                   {q: " who is the CEO of tesla", a :"elonmusk"},
+                   {q: "what is the name of nba team in philadelphia", a:"sixers"},
+                   {q: "most selling item in Wallmart ", a:"banana"},
+                   {q: "MLB team's in philadelphia ", a:"philloes"},   
+                  
+                    
+                ];
 
 // hold the answer lettter in  arrays, hold the blank spaces(ex : _  _ _ _ ), and hold the wrong letters
 var randomArray=[];
@@ -162,8 +166,8 @@ function roundComplete()
     //if user have 5 lives
     else if( playerLives === 2)
     {
-        ctx.moveTo(100,40);
-        ctx.lineTo(120,100);
+        ctx.moveTo(130,30);
+        ctx.lineTo(40,20);
         ctx.stroke();
     }// end elseif player lives 5
     //if user have 5 lives
@@ -178,7 +182,7 @@ function roundComplete()
     else if(playerLives === 0)
     {
         lossCounter++;
-        timeInterval() ;
+        alert("you lose");
 
         //update the html of loss counter
         document.getElementById("lossCounterID").innerHTML= lossCounter;
@@ -213,9 +217,7 @@ ctx.stroke();
 hangManGameDefault();
 
 
-function timeInterval() {
-    setTimeout(function(){ alert("Hello"); }, 1000);
-}
+
 //eventlistner
 document.onkeyup= function(event)
 {
