@@ -35,7 +35,7 @@ function hangManGameDefault()
    answerArray=[];
    blankSpaces=[];
    wrongGuesses=[];
-   playerLives=6;
+   playerLives=7;
 
   
 
@@ -132,56 +132,68 @@ function roundComplete()
         //restart the game
         var myResetGame = setTimeout(function() { hangManGameDefault();}, 500);
         myResetGame;
-        var alerting = setTimeout(function() { alert("You Win");}, 700);
-            alerting;
+        var alertingWin = setTimeout(function() { alert("You Win");}, 700);
+            alertingWin;
             
         myCanvasDefault();
 
     }// end if
     
-    //if user have 5 lives
-    else if( playerLives === 5)
+    //if user have 6 lives ( creating the head " o ")
+    else if( playerLives === 6)
     {
         ctx.beginPath();
        
         ctx.arc(100,50,10,0,2*Math.PI);
         ctx.stroke(); 
-    }// end elseif player lives 5
+    }// end elseif player lives 6
 
-    //if user have 5 lives
-    else if( playerLives === 4)
+    //if user have 5 lives creating the body( " |  "")
+    else if( playerLives === 5)
     {
         ctx.moveTo(100,80);
         ctx.lineTo(100,60);
         ctx.stroke();
     }// end elseif player lives 5
 
-    //if user have 3 lives
-    else if( playerLives === 3)
+    //if user have 4 lives creating the left hand ( " \  "")
+    else if( playerLives === 4)
     {
         ctx.moveTo(100,60);
         ctx.lineTo(60,50);
         ctx.stroke();
-    }// end elseif player lives 5
-    //if user have 5 lives
+    }// end elseif player lives 4
+
+    //if user have 3 lives creating the right hand ( " /  "")
+    else if( playerLives === 3)
+    {
+        ctx.moveTo(150,50);
+        ctx.lineTo(100,60);
+        ctx.stroke();
+    }// end elseif player lives 3
+
+    //if user have 2 lives creating the left leg ( " / "")
     else if( playerLives === 2)
     {
-        ctx.moveTo(130,30);
-        ctx.lineTo(40,20);
+        ctx.moveTo(60,90);
+        ctx.lineTo(100,80);
         ctx.stroke();
-    }// end elseif player lives 5
-    //if user have 5 lives
+    }// end elseif player lives 2
+
+
+    //if user have 1 lives creating the right leg ( " \ "")
     else if( playerLives === 1)
     {
-        ctx.moveTo(100,80);
-        ctx.lineTo(60,100);
+        ctx.moveTo(150,90);
+        ctx.lineTo(100,80);
         ctx.stroke();
-    }// end elseif player lives 5
+    }// end elseif player lives 1
 
     // if  player use all their lives then restart the game
     else if(playerLives === 0)
     {
         lossCounter++;
+        
         alert("you lose");
 
         //update the html of loss counter
@@ -192,6 +204,7 @@ function roundComplete()
         myCanvasDefault();
       
     }
+
 }// end round complete
 
 //canvas default 
