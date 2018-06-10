@@ -10,8 +10,8 @@ Due Saturday, June 09 2019
     <meta charset="utf-8" />
   
     <title>Hangman Game!!1</title>
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     
     
     
@@ -19,7 +19,7 @@ Due Saturday, June 09 2019
 
 <body>
     <!-- creating canvas to draw hang man  -->
-    <!-- <canvas id="myCanvas"> </canvas> -->
+    <canvas id="myCanvas"> </canvas>
     <header>
 
 
@@ -47,12 +47,8 @@ Due Saturday, June 09 2019
 
      <!--end main container div-->
 
-     <script type="text/javascript">
-        document.addEventListener('keydown',function(event){
-            var userText = document.getElementById("output");
-            userText.textContent= userText.textContent +event.key;
-        })
-    </script>
+    <!-- java script link -->
+    <script text="text/javascript" src="assets/javascript/main.js"> </script>
     
 </body>
 

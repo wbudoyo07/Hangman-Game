@@ -41,7 +41,16 @@ then print out the letters
 else  print out the letter on wrong guess and minus  one  the guest's lives
 
 
-
+if user guess equal to answer blanks
+then print out the the correct letter at position index 
+else if it wrong
+print out the user guess letters 
+    decrement the guess'lives 
+    compare the guess lives it it equal to 5 draw circle(head)
+    etc : equal to 4 draw vertical line(body)
+    etc til 0
+    
+ 
  
  
  

@@ -3,7 +3,7 @@
 
 // arrays questions and answers
 var questions=[
-                {q: "Guess the name",a:"will"},
+                {q: "Guess the name",a:"will", },
                 {q:"Your fav band", a:"LinkinPark"},
                 {q:"Your fav music", a:"Jazz"}
                 ];
@@ -21,6 +21,7 @@ var userGuess=""
 
 // Hold the lines of blank's answers(ex: _ _ _ _ _)   
 var blankSpaces =[];
+var blankAndSuccess=[];
 
 // Computer selected solution will be held here.
 var chosenWord = "";
@@ -34,7 +35,7 @@ var lettersInChosenWord = [];
 // var to win, lose  number blank and guessleft count
 var winCount=0;
 var loseCount=0;
-var guessLeft=0;
+var guessLeft=6;
 var numBlank=0;
 
 //randomly choose a choice from the options arrays. computer select the questions and answers
@@ -42,11 +43,11 @@ var computerQuestions =questions[Math.floor(Math.random() * questions.length)];
  // FUNCTIONS
 // ========================================================================================
 
-
+// default function when we start the game
 function hangMangame(){
 
     //reset the guesses back to 5
-    guessLeft= 5;
+    guessLeft= 6;
 
 
 //randomly choose a choice from the options arrays. computer select the questions and answers
@@ -70,18 +71,20 @@ wrongGuesses=[];
  // the words is broken into individual letters
  
 
+
+
  // testing
 // console.log(answerArray);
  
  // iterrate the blankspaces as same length as the hidden answers
  for(var i=0; i<computerQuestions.a.length; i++){
-     blankSpaces.push("_");
+     blankAndSuccess.push("_");
 
  }
 
-  console.log(blankSpaces);
+  console.log("blankAndSuccess= " + blankAndSuccess);
  // Prints the blanks at the beginning of each round in the HTML.
-   document.getElementById("blankSpaceID").innerHTML = blankSpaces.join(" ")
+   document.getElementById("blankSpaceID").innerHTML = blankAndSuccess.join(" ")
 
     //reprint the guess left to 5
  document.getElementById("counterID").innerHTML=guessLeft;
@@ -91,13 +94,12 @@ wrongGuesses=[];
    document.getElementById("wrongGuessesID").innerHTML = wrongGuesses.join(" ");
 
 
-
- //
+   myCanvasDefault();
 
 }// end hangManGame function
 
 //function to iterate the blank number
-function compareLetters(letterGuessed){
+function compareLetters(userLetter){
 
     
   
@@ -105,37 +107,64 @@ function compareLetters(letterGuessed){
     
     // push answer array to answer array by single character
     answerArray2.push(computerQuestions.a.charAt(i));
-    console.log(answerArray2);
+    
   }// end for loop
-
+  console.log("answe Array 2 " +answerArray2);
  // This boolean will be toggled based on whether or not
   // a user letter is found anywhere in the word.
   var letterInWord = false;
 
   //check the user guess is it inside the array answer
-for(var i=0;i<blankSpaces; i++){
+for(var i=0;i<blankAndSuccess.length; i++){
 
-    if(chosenWord[i]=== userGuess){
+    if(answerArray2[i]=== userLetter){
 
         letterInWord= true;
     }
+    console.log(letterInWord);
 }// end for
 
 // if the user guess find in the answer array then we need to print it out
 if(letterInWord){
     
     //loop throught the word
-    for(var i=0; i< blankSpaces; i++){
+    for(var i=0; i< answerArray2.length; i++){
 
+        if(answerArray2[i]=== userLetter){
+
+            blankAndSuccess[i]= userLetter;
+
+        }
 
     }
+    console.log("test 1"+blankAndSuccess);
+    console.log ("test 2"+ userLetter);
+}
+
+// if the user guess the wrong letter 
+else{
+    wrongGuesses.push(userLetter);
+    console.log("wrong guess" +wrongGuesses);
+    guessLeft--;
+
 }
 
  
   
 }// compareletters function
 
+//canvas default 
+function myCanvasDefault(){
+    // creating hangman image 
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.moveTo(0,20);
+ctx.lineTo(100,20);
+ctx.moveTo(100,20);
+ctx.lineTo(100,50);
+ctx.stroke();
 
+}
 
 
 
@@ -151,16 +180,15 @@ if(letterInWord){
 //============================================
 // start the game 
  hangMangame();
-
- compareLetters();
+ 
  //  user input when they press the keyboard
  document.onkeyup= function(event){
 
     //convert the users' press to lowercase letters
-    userGuess= String.fromCharCode(event).toLocaleLowerCase();
-    
+    letters= String.fromCharCode(event.which).toLocaleLowerCase();
+   console.log(letters);
     // compare the user input with the correct answer by calling the method we created
-    compareLetters(userGuess);
+    compareLetters(letters);
 
 
      
